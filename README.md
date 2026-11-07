@@ -10,6 +10,14 @@ OmniReverse Studio is a 42-engine reverse engineering, binary unpacking, symboli
 
 ---
 
+## Native Win32 GUI Preview
+
+<p align="center">
+  <img src="docs/assets/omni_studio_win32_ui.png" alt="OmniReverse Studio Native GUI" width="480">
+</p>
+
+---
+
 ## Architecture & Subsystems
 
 ```
