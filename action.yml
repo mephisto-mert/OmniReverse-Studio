@@ -1,0 +1,45 @@
+name: 'OmniReverse Binary & Security Audit Action'
+description: 'Automated 42-Engine Binary Analysis, Protector Triage, AST SQLi Scan, and Standalone HTML Audit Report Generation'
+author: 'Mephisto Mert'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  target:
+    description: 'Path to binary or source artifact to analyze (.exe, .dll, .apk, .so, .py, etc.)'
+    required: true
+  mode:
+    description: 'Analysis mode: all, deep, tls, granular, sqli, v3_suite'
+    required: false
+    default: 'all'
+  output-report:
+    description: 'Output path for standalone HTML audit report'
+    required: false
+    default: 'omnireverse_audit_report.html'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install Dependencies
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r ${{ github.action_path }}/requirements.txt
+
+    - name: Run OmniReverse Analysis
+      shell: bash
+      run: |
+        python ${{ github.action_path }}/omni_cli_runner.py "${{ inputs.target }}" --mode "${{ inputs.mode }}" --export-html "${{ inputs.output-report }}"
+
+    - name: Upload Audit Artifact
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: omnireverse-security-report
+        path: ${{ inputs.output-report }}

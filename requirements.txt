@@ -1,0 +1,13 @@
+# OmniReverse Studio v2.1 — Core & Web Studio Dependencies
+pefile>=2023.2.7
+capstone>=5.0.1
+unicorn>=2.0.1
+z3-solver>=4.12.6.0
+fastapi>=0.110.0
+uvicorn>=0.29.0
+python-multipart>=0.0.9
+pydantic>=2.6.0
+pytest>=8.0.0
+# Optional dynamic instrumentation & browser E2E testing
+frida>=16.0.0; platform_machine == "AMD64" or platform_machine == "x86_64" or platform_machine == "arm64"
+playwright>=1.42.0

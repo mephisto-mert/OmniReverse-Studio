@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+build/
+dist/
+*.egg-info/
+
+# Internal Reports & Scratch Artifacts
+AUDIT_REPORT.md
+SECURITY_REPORT.md
+TASK_HANDOFF.md
+TEST_RESULTS.md
+BUG_TRACKER.md
+PERFORMANCE_REPORT.md
+DEVICE_COMPATIBILITY.md
+sync_omni_mcp_schemas.py
+tests/legacy_crackme_scripts/
+
+# Heavy SDKs & Binaries
+native_app/winsdk/
+batch_analysis_10_apks/
+dump_aszs/
+.sessions/
+.ghidra_projects/
+.exports/
+*.dll
+*.exe
+*.obj
+*.lib
+*.exp
+*.pdb
+*.log
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+playwright_report.json
+
+# OS Specific
+.DS_Store
+Thumbs.db
+Desktop.ini

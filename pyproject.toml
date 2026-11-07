@@ -1,0 +1,77 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omnireverse-studio"
+version = "3.2.0"
+description = "Unified 42-Engine Binary Reverse Engineering, Unpacking, Symbolic Solving (Z3), Mobile/AOT & SAST Platform"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Tris & OmniReverse Contributors"}
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Information Technology",
+  "Topic :: Security",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "pefile>=2023.2.7",
+  "capstone>=5.0.1",
+  "unicorn>=2.0.1",
+  "z3-solver>=4.12.6.0",
+  "fastapi>=0.110.0",
+  "uvicorn>=0.29.0",
+  "python-multipart>=0.0.9",
+  "pydantic>=2.6.0",
+]
+
+[project.scripts]
+omni = "omni_cli_runner:main"
+omnireverse = "omni_cli_runner:main"
+omnireverse-mcp = "omni_server:main"
+
+[tool.setuptools]
+packages = []
+py-modules = [
+  "android_ext_engine",
+  "apk_engine",
+  "batch_apk_analyzer",
+  "decompiler_bridge",
+  "dynamic_unpacker",
+  "emulator_engine",
+  "granular_engine",
+  "live_engine",
+  "mba_engine",
+  "mcp_extensions_engine",
+  "mobile_deep_engine",
+  "modern_packers_engine",
+  "native_packer_engine",
+  "native_tls_hwbp_engine",
+  "omni_cli_runner",
+  "omni_config",
+  "omni_server",
+  "pipeline",
+  "rebuilder_engine",
+  "report_generator",
+  "runtimes_engine",
+  "session_engine",
+  "sqli_detector",
+  "symbolic_protocol_engine",
+  "triage_engine",
+  "visual_patch_memory_engine",
+  "vm_engine",
+  "wasm_engine",
+  "web_bundle_engine",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["legacy_crackme_scripts", "winsdk", ".sessions", ".exports", "__pycache__"]
+python_files = ["test_*.py"]
